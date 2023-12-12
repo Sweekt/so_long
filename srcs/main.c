@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/12 18:13:01 by beroy            ###   ########.fr       */
+/*   Created: 2023/12/11 15:23:59 by beroy             #+#    #+#             */
+/*   Updated: 2023/12/12 19:09:34 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-# define MLX_ERROR 1
+int main(void)
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
 
-# include "mlx-linux/mlx.h"
-# include "mlx-linux/mlx_int.h"
-# include <unistd.h>
-
-#endif
+	mlx_ptr = mlx_init();
+	if (mlx_ptr == NULL)
+		return (MLX_ERROR);
+	win_ptr = mlx_new_window(mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "My first window!");
+	if (win_ptr == NULL)
+	{
+		free(win_ptr);
+		return (MLX_ERROR);
+	}
+	while (1)
+		;
+	mlx_destroy_window(mlx_ptr, win_ptr);
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
+}

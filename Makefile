@@ -1,12 +1,12 @@
 SRCS	:=	main.c
 
-SRCS_D	:=	#
+SRCS_D	:=	srcs/
 
 OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.c=$(OBJS_D)%.o)
 
-HEAD_D	:=	.
+HEAD_D	:=	includes/
 
 CFLAGS	:=	-Wall -Wextra -Werror
 
@@ -35,6 +35,5 @@ fclean	:	clean
 			$(RM) $(NAME)
 
 re		:	fclean all
-
 
 .PHONY: all bonus clean fclean re
