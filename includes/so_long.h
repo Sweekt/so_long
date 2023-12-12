@@ -26,8 +26,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "mlx_linux/mlx.h"
-# include "mlx_linux/mlx_int.h"
+# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 # include <unistd.h>
 
 char	*get_next_line(int fd);

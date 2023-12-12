@@ -6,7 +6,7 @@ OBJS_D	:=	objs/
 
 OBJS	:=	$(SRCS:%.c=$(OBJS_D)%.o)
 
-HEAD_D	:=	includes/
+HEAD_D	:=	.
 
 CFLAGS	:=	-Wall -Wextra -Werror
 

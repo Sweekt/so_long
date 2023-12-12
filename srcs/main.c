@@ -6,11 +6,11 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:23:59 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/12 19:09:34 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/12 19:36:18 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int main(void)
 {

@@ -6,11 +6,11 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 12:01:53 by beroy             #+#    #+#             */
-/*   Updated: 2023/11/27 11:52:48 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/12 19:36:18 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 size_t	ft_strlen(char *str)
 {
