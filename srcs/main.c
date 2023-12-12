@@ -6,13 +6,13 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:23:59 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/12 19:36:18 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/12 19:45:53 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int main(void)
+/*int main(void)
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -31,4 +31,16 @@ int main(void)
 	mlx_destroy_window(mlx_ptr, win_ptr);
 	mlx_destroy_display(mlx_ptr);
 	free(mlx_ptr);
+}*/
+
+int	main(int argc, char **argv)
+{
+	char **map;
+
+	if (argc != 2)
+		return (write(1, "Map Input Error\n", 16), 0);
+	map = map_parser(argv[1]);
+	if (map_checker(map) == 1)
+		return (write(1, "Invalid Map\n", 12), map_destroy(map), 0);
+
 }
