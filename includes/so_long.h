@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/12 18:54:24 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/14 18:21:10 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,20 @@
 # include "../mlx_linux/mlx_int.h"
 # include <unistd.h>
 
-char	*get_next_line(int fd);
-char	*ft_strdup(char *str);
-int		ft_linecheck(char *str);
+typedef struct s_map {
+	size_t	px;
+	size_t	py;
+} 				t_map;
+
 char	*ft_strjoin(char *s1, char *s2);
-void	ft_buffclean(char *str);
+char	**ft_tabdup(char **str);
+void	*ft_calloc(size_t nmemb, size_t size);
+char	**ft_split(char const *s, char c);
+void	*ft_splitdestroy(char **split);
+size_t	ft_strlen(char *str);
+
+int		map_checker(char **map);
+char	**map_parser(char *filename);
+int		solver_check(char **map);
 
 #endif
