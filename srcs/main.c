@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:23:59 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/13 17:02:16 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/16 16:11:56 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (write(1, "Map Input Error\n", 16), 0);
 	map = map_parser(argv[1]);
+	write(1, "Parsing OK!\n", 12);
 	if (map == NULL)
 		return (0);
 	if (map_checker(map) == 1)

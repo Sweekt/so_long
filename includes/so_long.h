@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/14 18:21:10 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/16 16:02:28 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"
-# include <unistd.h>
+# include <fcntl.h>
+/*# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"*/
 
 typedef struct s_map {
+	size_t	ecount;
+	size_t	pcount;
 	size_t	px;
 	size_t	py;
 } 				t_map;

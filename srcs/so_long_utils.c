@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:11:40 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/14 18:21:10 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/16 16:03:52 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ char	**ft_tabdup(char **str)
 	size_t	j;
 	char	**dup;
 
-	dup = calloc(sizeof(char**) * (ft_tablen(map) + 1));
+	dup = calloc(sizeof(char**), (ft_tablen(str) + 1));
 	if (dup == NULL)
 		return (0);
 	i = 0;
 	while (str[i])
 	{
 		j = 0;
-		dup[i] = calloc (sizeof(char) * (ft_strlen(str[i]) + 1));
+		dup[i] = calloc (sizeof(char), (ft_strlen(str[i]) + 1));
 		if (dup[i] == NULL)
 			return (ft_splitdestroy(dup), NULL);
 		while (str[i][j])
