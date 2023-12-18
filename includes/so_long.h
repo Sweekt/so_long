@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/16 16:02:28 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/18 16:35:47 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
 /*# include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"*/
 
 typedef struct s_map {
+	char	**map;
+	size_t	ccount;
 	size_t	ecount;
 	size_t	pcount;
 	size_t	px;
@@ -44,8 +47,9 @@ char	**ft_split(char const *s, char c);
 void	*ft_splitdestroy(char **split);
 size_t	ft_strlen(char *str);
 
-int		map_checker(char **map);
+int		map_checker(t_map *map_info);
 char	**map_parser(char *filename);
-int		solver_check(char **map);
+int 	solver_check(t_map *map_info);
+void	map_state_init(t_map *map_info);
 
 #endif

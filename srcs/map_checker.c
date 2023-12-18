@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:46:02 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/16 17:58:42 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/18 16:40:31 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,18 +73,21 @@ int check_shape(char **map)
 	return (0);
 }
 
-int	map_checker(char **map)
+int	map_checker(t_map *map_info)
 {
-	if (check_shape(map) == 1)
+	if (check_shape(map_info->map) == 1)
 		return (1);
 	write(1, "Shape OK!\n", 10);
-	if (check_border(map) == 1)
+	if (check_border(map_info->map) == 1)
 		return (1);
 	write(1, "Border OK!\n", 11);
-	if (check_content(map) == 1)
+	if (check_content(map_info->map) == 1)
 		return (1);
 	write(1, "Content OK!\n", 12);
-	if (solver_check(map) == 1)
+	if (map_info->ecount != 1 || map_info->pcount != 1)
+		return (1);
+	write(1, "Count OK!\n", 10);
+	if (solver_check(map_info) == 1)
 		return (1);
 	write(1, "Solve OK!\n", 10);
 	return (0);

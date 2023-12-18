@@ -6,11 +6,41 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:50:00 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/16 16:43:08 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/18 16:46:36 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	map_state_init(t_map *map_info)
+{
+	size_t	i;
+	size_t	j;
+
+	map_info->ccount = 0;
+	map_info->ecount = 0;
+	map_info->pcount = 0;
+	i = 0;
+	while (map_info->map[i])
+	{
+		j = 0;
+		while (map_info->map[i][j])
+		{
+			if (map_info->map[i][j] == 'C')
+				map_info->ccount++;
+			else if (map_info->map[i][j] == 'E')
+				map_info->ecount++;
+			else if (map_info->map[i][j] == 'P')
+			{
+				map_info->px = j;
+				map_info->py = i;
+				map_info->pcount++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
 
 char	*ft_joinnfree(char *map, char *buff)
 {
@@ -48,8 +78,7 @@ char	**map_parser(char *filename)
 	}
 	close (fd);
 	map = ft_split(map_extract, '\n');
-	if (map == NULL)
-		return (free(map_extract), NULL);
-	free(map_extract);
-	return (map);
+	/*if (map == NULL)
+		return (free(map_extract), NULL);*/
+	return (free(map_extract), map);
 }

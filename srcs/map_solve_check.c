@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:04:31 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/16 17:40:03 by beroy            ###   ########.fr       */
+/*   Updated: 2023/12/18 16:32:07 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,49 +44,16 @@ void	map_filler(char **map, size_t x, size_t y)
 	}
 }
 
-int path_checker(char** map, size_t x, size_t y)
+int solver_check(t_map *map_info)
 {
 	char	**map_clone;
 
-	map_clone = ft_tabdup(map);
+	map_clone = ft_tabdup(map_info->map);
 	if (map_clone == NULL)
 		return (1);
-	map_filler(map_clone, x, y);
+	map_filler(map_clone, map_info->px, map_info->py);
 	if (fill_checker(map_clone) == 1)
 		return (free(map_clone), 1);
 	free(map_clone);
-	return (0);
-}
-
-int	solver_check(char **map)
-{
-	size_t	i;
-	size_t	j;
-	t_map	map_pos;
-
-	i = 0;
-	map_pos.ecount = 0;
-	map_pos.pcount = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'E')
-				map_pos.ecount++;
-			if (map[i][j] == 'P')
-			{
-				map_pos.pcount++;
-				map_pos.px = i;
-				map_pos.py = j;
-			}
-			j++;
-		}
-		i++;
-	}
-	if (map_pos.ecount != 1 || map_pos.pcount != 1)
-		return (1);
-	if (path_checker(map, map_pos.px, map_pos.py) == 1)
-		return (1);
 	return (0);
 }
