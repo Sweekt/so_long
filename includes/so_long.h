@@ -28,8 +28,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
-/*# include "../mlx_linux/mlx.h"
-# include "../mlx_linux/mlx_int.h"*/
+# include "../mlx_linux/mlx.h"
+# include "../mlx_linux/mlx_int.h"
 
 typedef struct s_map {
 	char	**map;
