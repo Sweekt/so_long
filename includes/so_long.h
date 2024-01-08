@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/18 16:35:47 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/08 15:09:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ typedef struct s_map {
 	size_t	px;
 	size_t	py;
 } 				t_map;
+
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
 
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_tabdup(char **str);
