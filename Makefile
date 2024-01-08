@@ -1,4 +1,9 @@
-SRCS	:=	main.c
+SRCS	:=	main.c				\
+			ft_split.c			\
+			map_checker.c		\
+			map_parser.c		\
+			map_solve_check.c	\
+			so_long_utils.c
 
 SRCS_D	:=	srcs/
 

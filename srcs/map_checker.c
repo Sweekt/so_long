@@ -41,6 +41,7 @@ int check_border(char **map)
 	size_t	w;
 
 	i = 0;
+	h = 0;
 	w = ft_strlen(map[0]);
 	while (map[h])
 	{

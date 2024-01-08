@@ -28,6 +28,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdint.h>
 # include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"
 
