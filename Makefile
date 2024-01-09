@@ -3,7 +3,8 @@ SRCS	:=	main.c				\
 			map_checker.c		\
 			map_parser.c		\
 			map_solve_check.c	\
-			so_long_utils.c
+			so_long_utils.c		\
+			map_gen.c
 
 SRCS_D	:=	srcs/
 

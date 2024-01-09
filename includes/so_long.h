@@ -39,6 +39,8 @@ typedef struct s_map {
 	size_t	pcount;
 	size_t	px;
 	size_t	py;
+	size_t	mapw;
+	size_t	maph;
 } 				t_map;
 
 typedef struct	s_data {
@@ -47,7 +49,14 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		img_width;
+	int		img_height;
 }				t_data;
+
+typedef struct	s_mlx	{
+	void*	mlx;
+	void*	win;
+}				t_mlx;
 
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_tabdup(char **str);
@@ -60,5 +69,7 @@ int		map_checker(t_map *map_info);
 char	**map_parser(char *filename);
 int 	solver_check(t_map *map_info);
 void	map_state_init(t_map *map_info);
+
+void	map_gen(t_mlx *mlx, t_map map_info, t_data *img);
 
 #endif

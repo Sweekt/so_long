@@ -58,25 +58,25 @@ int check_border(char **map)
 	return (0);
 }
 
-int check_shape(char **map)
+int check_shape(t_map *map_info)
 {
-	size_t	tmp;
 	size_t	i;
 
-	tmp = ft_strlen(map[0]);
+	map_info->mapw = ft_strlen(map_info->map[0]);
 	i = 0;
-	while (map[i])
+	while (map_info->map[i])
 	{
-		if (ft_strlen(map[i]) != tmp)
+		if (ft_strlen(map_info->map[i]) != map_info->mapw)
 			return (1);
 		i++;
 	}
+	map_info->maph = i;
 	return (0);
 }
 
 int	map_checker(t_map *map_info)
 {
-	if (check_shape(map_info->map) == 1)
+	if (check_shape(map_info) == 1)
 		return (1);
 	write(1, "Shape OK!\n", 10);
 	if (check_border(map_info->map) == 1)
