@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/08 15:09:40 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/09 17:04:46 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map {
 	size_t	py;
 	size_t	mapw;
 	size_t	maph;
+	int 	input;
 } 				t_map;
 
 typedef struct	s_data {
@@ -71,5 +72,6 @@ int 	solver_check(t_map *map_info);
 void	map_state_init(t_map *map_info);
 
 void	map_gen(t_mlx *mlx, t_map map_info, t_data *img);
+void	move_up(t_map *map_info);
 
 #endif

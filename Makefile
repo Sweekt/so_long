@@ -4,7 +4,8 @@ SRCS	:=	main.c				\
 			map_parser.c		\
 			map_solve_check.c	\
 			so_long_utils.c		\
-			map_gen.c
+			map_gen.c			\
+			move_wasd.c
 
 SRCS_D	:=	srcs/
 

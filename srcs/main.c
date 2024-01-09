@@ -6,11 +6,39 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:23:59 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/09 14:55:06 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/09 17:06:06 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	close_win(t_mlx *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	return (0);
+}
+
+int key_input(int keycode, t_mlx *mlx)
+{
+	if (keycode == 65307)
+		mlx_destroy_window(mlx->mlx, mlx->win);
+	else if (keycode == 119) //W
+		return (119);
+	else if (keycode == 97) //A
+		return (97);
+	else if (keycode == 115) //S
+		return (115);
+	else if (keycode == 100) //D
+		return (100);
+	return (0);
+}
+
+int	render_next_frame(t_map *map_info)
+{
+	if (map_info->input == 119)
+		return (move_up(map_info), 0);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -35,7 +63,11 @@ int	main(int argc, char **argv)
 		free(mlx.win);
 		return (MLX_ERROR);
 	}
+	map_info.input = 0;
+	mlx_loop_hook(mlx.mlx, render_next_frame, &map_info);
 	map_gen(&mlx, map_info, &img);
+	mlx_hook(mlx.win, 17, 1L<<0, close_win, &mlx);
+	map_info.input = mlx_hook(mlx.win, 2, 1L<<0, key_input, &mlx);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
