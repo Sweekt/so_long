@@ -6,23 +6,12 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/09 17:04:46 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/10 15:49:11 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
-# endif
-# ifndef OPEN_MAX
-#  define OPEN_MAX 1024
-# endif
-
-# define MLX_ERROR 1
-# define WINDOW_WIDTH 600
-# define WINDOW_HEIGHT 600
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -31,6 +20,8 @@
 # include <stdint.h>
 # include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"
+
+# define MLX_ERROR 1
 
 typedef struct s_map {
 	char	**map;
@@ -41,7 +32,7 @@ typedef struct s_map {
 	size_t	py;
 	size_t	mapw;
 	size_t	maph;
-	int 	input;
+	size_t	estate;
 } 				t_map;
 
 typedef struct	s_data {
@@ -55,8 +46,10 @@ typedef struct	s_data {
 }				t_data;
 
 typedef struct	s_mlx	{
-	void*	mlx;
-	void*	win;
+	void	*mlx;
+	void	*win;
+	t_map	*map_info;
+	t_data	*img;
 }				t_mlx;
 
 char	*ft_strjoin(char *s1, char *s2);
@@ -71,7 +64,10 @@ char	**map_parser(char *filename);
 int 	solver_check(t_map *map_info);
 void	map_state_init(t_map *map_info);
 
-void	map_gen(t_mlx *mlx, t_map map_info, t_data *img);
+void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img);
 void	move_up(t_map *map_info);
+void	move_left(t_map *map_info);
+void	move_down(t_map *map_info);
+void	move_right(t_map *map_info);
 
 #endif

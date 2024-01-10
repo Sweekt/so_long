@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:50:00 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/18 16:47:52 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/10 15:44:40 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	map_state_init(t_map *map_info)
 	map_info->ccount = 0;
 	map_info->ecount = 0;
 	map_info->pcount = 0;
+	map_info->estate = 0;
 	i = 0;
 	while (map_info->map[i])
 	{
@@ -32,8 +33,8 @@ void	map_state_init(t_map *map_info)
 				map_info->ecount++;
 			else if (map_info->map[i][j] == 'P')
 			{
-				map_info->px = j;
-				map_info->py = i;
+				map_info->px = i;
+				map_info->py = j;
 				map_info->pcount++;
 			}
 			j++;
