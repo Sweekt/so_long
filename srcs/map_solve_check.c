@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   map_solve_check.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 17:04:31 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/18 16:32:07 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:09:58 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int fill_checker(char **map)
+int	fill_checker(char **map)
 {
 	size_t	i;
 	size_t	j;
@@ -44,7 +44,7 @@ void	map_filler(char **map, size_t x, size_t y)
 	}
 }
 
-int solver_check(t_map *map_info)
+int	solver_check(t_map *map_info)
 {
 	char	**map_clone;
 
@@ -53,7 +53,7 @@ int solver_check(t_map *map_info)
 		return (1);
 	map_filler(map_clone, map_info->px, map_info->py);
 	if (fill_checker(map_clone) == 1)
-		return (free(map_clone), 1);
-	free(map_clone);
+		return (ft_splitdestroy(map_clone), 1);
+	ft_splitdestroy(map_clone);
 	return (0);
 }

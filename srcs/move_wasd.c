@@ -6,7 +6,7 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:07:52 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/10 17:08:41 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 12:10:20 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	move_up(t_map *map_info)
 		else if (tmp == 'E' && map_info->ccount != 0)
 			map_info->estate = 1;
 	}
+	map_info->moves += 1;
 }
 
 void	move_left(t_map *map_info)
@@ -64,6 +65,7 @@ void	move_left(t_map *map_info)
 		else if (tmp == 'E' && map_info->ccount != 0)
 			map_info->estate = 1;
 	}
+	map_info->moves += 1;
 }
 
 void	move_down(t_map *map_info)
@@ -91,6 +93,7 @@ void	move_down(t_map *map_info)
 		else if (tmp == 'E' && map_info->ccount != 0)
 			map_info->estate = 1;
 	}
+	map_info->moves += 1;
 }
 
 void	move_right(t_map *map_info)
@@ -118,4 +121,5 @@ void	move_right(t_map *map_info)
 		else if (tmp == 'E' && map_info->ccount != 0)
 			map_info->estate = 1;
 	}
+	map_info->moves += 1;
 }

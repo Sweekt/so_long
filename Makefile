@@ -5,7 +5,8 @@ SRCS	:=	main.c				\
 			map_solve_check.c	\
 			so_long_utils.c		\
 			map_gen.c			\
-			move_wasd.c
+			move_wasd.c			\
+			ft_itoa.c
 
 SRCS_D	:=	srcs/
 
@@ -24,7 +25,7 @@ NAME	:=	so_long
 all	:	$(NAME)
 
 $(NAME)	:	$(OBJS_D) $(OBJS) mlx Makefile
-			$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+			$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g3 -o $(NAME)
 
 $(OBJS)	:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD)
 			$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@

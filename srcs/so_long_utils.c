@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 18:11:40 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/16 16:03:52 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:04:44 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	**ft_tabdup(char **str)
 	size_t	j;
 	char	**dup;
 
-	dup = calloc(sizeof(char**), (ft_tablen(str) + 1));
+	dup = calloc(sizeof(char **), (ft_tablen(str) + 1));
 	if (dup == NULL)
 		return (0);
 	i = 0;

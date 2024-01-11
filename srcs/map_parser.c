@@ -6,21 +6,27 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:50:00 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/10 15:44:40 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 13:58:48 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	map_struct_init(t_map *map_info)
+{
+	map_info->ccount = 0;
+	map_info->ecount = 0;
+	map_info->pcount = 0;
+	map_info->estate = 0;
+	map_info->moves = 0;
+}
 
 void	map_state_init(t_map *map_info)
 {
 	size_t	i;
 	size_t	j;
 
-	map_info->ccount = 0;
-	map_info->ecount = 0;
-	map_info->pcount = 0;
-	map_info->estate = 0;
+	map_struct_init(map_info);
 	i = 0;
 	while (map_info->map[i])
 	{
@@ -54,8 +60,8 @@ char	*ft_joinnfree(char *map, char *buff)
 
 char	**map_parser(char *filename)
 {
-	int 	fd;
-	int 	rd;
+	int		fd;
+	int		rd;
 	char	buff[1025];
 	char	*map_extract;
 	char	**map;
@@ -77,9 +83,6 @@ char	**map_parser(char *filename)
 		if (map_extract == NULL)
 			return (close(fd), NULL);
 	}
-	close (fd);
 	map = ft_split(map_extract, '\n');
-	/*if (map == NULL)
-		return (free(map_extract), NULL);*/
-	return (free(map_extract), map);
+	return (close (fd), free(map_extract), map);
 }

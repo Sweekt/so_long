@@ -6,7 +6,7 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/10 15:49:11 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 12:10:20 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ typedef struct s_map {
 	size_t	mapw;
 	size_t	maph;
 	size_t	estate;
+	size_t	moves;
 } 				t_map;
 
 typedef struct	s_data {
 	void	*img;
-	char	*addr;
+	/*char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
-	int		endian;
+	int		endian;*/
 	int		img_width;
 	int		img_height;
 }				t_data;
@@ -58,11 +59,14 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	**ft_split(char const *s, char c);
 void	*ft_splitdestroy(char **split);
 size_t	ft_strlen(char *str);
+char	*ft_itoa(int n);
 
 int		map_checker(t_map *map_info);
 char	**map_parser(char *filename);
 int 	solver_check(t_map *map_info);
 void	map_state_init(t_map *map_info);
+int		close_win(t_mlx *mlx);
+int 	key_input(int keycode, t_mlx *mlx);
 
 void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img);
 void	move_up(t_map *map_info);

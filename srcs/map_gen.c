@@ -6,7 +6,7 @@
 /*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:17:59 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/10 17:24:05 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:20:49 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 	size_t	h;
 
 	h = 0;
+	w = 2;
 	while (h < map_info->maph)
 	{
-		w = 0;
 		while (w < map_info->mapw)
 		{
 			asset_put(mlx, map_info->map[h][w], img);
@@ -44,5 +44,10 @@ void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 			w++;
 		}
 		h++;
+		w = 0;
 	}
+	img->img = mlx_xpm_file_to_image(mlx->mlx, "assets/move_frame.xpm", &img->img_width, &img->img_height);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
+	mlx_string_put(mlx->mlx, mlx->win, 4, 11, 0xFFFFFFFF, "moves :");
+	mlx_string_put(mlx->mlx, mlx->win, 50, 12, 0xFFFFFFFF, ft_itoa(map_info->moves));
 }

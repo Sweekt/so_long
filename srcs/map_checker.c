@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-int check_content(char **map)
+int	check_content(char **map)
 {
 	size_t	i;
 	size_t	j;
@@ -34,7 +34,7 @@ int check_content(char **map)
 	return (0);
 }
 
-int check_border(char **map)
+int	check_border(char **map)
 {
 	size_t	i;
 	size_t	h;
@@ -58,7 +58,7 @@ int check_border(char **map)
 	return (0);
 }
 
-int check_shape(t_map *map_info)
+int	check_shape(t_map *map_info)
 {
 	size_t	i;
 

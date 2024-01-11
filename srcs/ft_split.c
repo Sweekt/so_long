@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:27:55 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/14 18:16:42 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 13:53:07 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ char	**ft_split(char const *s, char c)
 	size_t	words;
 	char	**split;
 
-	/*if (!s)
-		return (NULL);*/
+	if (!s)
+		return (NULL);
 	i = 0;
 	j = 0;
 	words = ft_countwords(s, c);
