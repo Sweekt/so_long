@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/11 12:10:20 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/11 15:25:33 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 # include "../mlx_linux/mlx.h"
 # include "../mlx_linux/mlx_int.h"
 
-# define MLX_ERROR 1
-
-typedef struct s_map {
+typedef struct s_map
+{
 	char	**map;
 	size_t	ccount;
 	size_t	ecount;
@@ -34,9 +33,10 @@ typedef struct s_map {
 	size_t	maph;
 	size_t	estate;
 	size_t	moves;
-} 				t_map;
+}	t_map;
 
-typedef struct	s_data {
+typedef struct s_data
+{
 	void	*img;
 	/*char	*addr;
 	int		bits_per_pixel;
@@ -44,14 +44,15 @@ typedef struct	s_data {
 	int		endian;*/
 	int		img_width;
 	int		img_height;
-}				t_data;
+}	t_data;
 
-typedef struct	s_mlx	{
+typedef struct s_mlx
+{
 	void	*mlx;
 	void	*win;
 	t_map	*map_info;
 	t_data	*img;
-}				t_mlx;
+}	t_mlx;
 
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_tabdup(char **str);
@@ -63,10 +64,10 @@ char	*ft_itoa(int n);
 
 int		map_checker(t_map *map_info);
 char	**map_parser(char *filename);
-int 	solver_check(t_map *map_info);
+int		solver_check(t_map *map_info);
 void	map_state_init(t_map *map_info);
 int		close_win(t_mlx *mlx);
-int 	key_input(int keycode, t_mlx *mlx);
+int		key_input(int keycode, t_mlx *mlx);
 
 void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img);
 void	move_up(t_map *map_info);
