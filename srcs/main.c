@@ -6,11 +6,19 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:23:59 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/17 15:05:13 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/17 15:08:37 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	mlx_destroyer(t_mlx *mlx)
+{
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx->mlx);
+	ft_splitdestroy(mlx->map_info->map);
+}
 
 int	close_win(t_mlx *mlx)
 {
@@ -61,9 +69,6 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx.win, 17, 1L << 0, close_win, &mlx);
 	mlx_hook(mlx.win, 2, 1L << 0, key_input, &mlx);
 	mlx_loop(mlx.mlx);
-	mlx_destroy_window(mlx.mlx, mlx.win);
-	mlx_destroy_display(mlx.mlx);
-	free(mlx.mlx);
-	ft_splitdestroy(mlx.map_info->map);
+	mlx_destroyer(&mlx);
 	return (0);
 }

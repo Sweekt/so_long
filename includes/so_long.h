@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:26:30 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/17 14:49:52 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/17 14:50:27 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int		solver_check(t_map *map_info);
 void	map_state_init(t_map *map_info);
 int		close_win(t_mlx *mlx);
 int		key_input(int keycode, t_mlx *mlx);
+void	mlx_destroyer(t_mlx *mlx);
 
 void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img);
 void	move_up(t_map *map_info);

@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:17:59 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/17 14:59:45 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/17 15:14:54 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,31 @@ void	asset_put(t_mlx *mlx, char c, t_data *img)
 				"assets/exit_o.xpm", &img->img_width, &img->img_height);
 }
 
+void	step_display(t_mlx *mlx, t_data *img)
+{
+	char	*tmp;
+
+	img->img = mlx_xpm_file_to_image(mlx->mlx,
+									 "assets/move_frame.xpm", &img->img_width, &img->img_height);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
+	mlx_destroy_image(mlx->mlx, img->img);
+	mlx_string_put(mlx->mlx, mlx->win, 4, 11, 0xFFFFFFFF, "moves :");
+	tmp = ft_itoa(mlx->map_info->moves);
+	if (tmp == NULL)
+	{
+		mlx_destroyer(mlx);
+		exit(0);
+	}
+	mlx_string_put(mlx->mlx, mlx->win,
+				   50, 12, 0xFFFFFFFF, tmp);
+	free(tmp);
+}
+
 void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 {
 	size_t	w;
 	size_t	h;
-	char	*tmp;
+
 
 	h = 0;
 	w = 2;
@@ -55,13 +75,5 @@ void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 		h++;
 		w = 0;
 	}
-	img->img = mlx_xpm_file_to_image(mlx->mlx,
-			"assets/move_frame.xpm", &img->img_width, &img->img_height);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
-	mlx_destroy_image(mlx->mlx, img->img);
-	mlx_string_put(mlx->mlx, mlx->win, 4, 11, 0xFFFFFFFF, "moves :");
-	tmp = ft_itoa(map_info->moves);
-	mlx_string_put(mlx->mlx, mlx->win,
-		50, 12, 0xFFFFFFFF, tmp);
-	free(tmp);
+	step_display(mlx, img);
 }
