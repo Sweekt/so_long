@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:17:59 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/11 15:17:23 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/17 14:59:45 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 {
 	size_t	w;
 	size_t	h;
+	char	*tmp;
 
 	h = 0;
 	w = 2;
@@ -48,6 +49,7 @@ void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 			asset_put(mlx, map_info->map[h][w], img);
 			mlx_put_image_to_window(mlx->mlx, mlx->win,
 				img->img, w * 32, h * 32);
+			mlx_destroy_image(mlx->mlx, img->img);
 			w++;
 		}
 		h++;
@@ -56,7 +58,10 @@ void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 	img->img = mlx_xpm_file_to_image(mlx->mlx,
 			"assets/move_frame.xpm", &img->img_width, &img->img_height);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
+	mlx_destroy_image(mlx->mlx, img->img);
 	mlx_string_put(mlx->mlx, mlx->win, 4, 11, 0xFFFFFFFF, "moves :");
+	tmp = ft_itoa(map_info->moves);
 	mlx_string_put(mlx->mlx, mlx->win,
-		50, 12, 0xFFFFFFFF, ft_itoa(map_info->moves));
+		50, 12, 0xFFFFFFFF, tmp);
+	free(tmp);
 }

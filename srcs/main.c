@@ -6,7 +6,7 @@
 /*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:23:59 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/11 15:18:37 by beroy            ###   ########.fr       */
+/*   Updated: 2024/01/17 15:05:13 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	main(int argc, char **argv)
 	mlx_hook(mlx.win, 2, 1L << 0, key_input, &mlx);
 	mlx_loop(mlx.mlx);
 	mlx_destroy_window(mlx.mlx, mlx.win);
+	mlx_destroy_display(mlx.mlx);
+	free(mlx.mlx);
 	ft_splitdestroy(mlx.map_info->map);
 	return (0);
 }
