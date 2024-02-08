@@ -6,7 +6,7 @@
 #    By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 16:45:45 by grebrune          #+#    #+#              #
-#    Updated: 2024/02/08 10:55:54 by beroy            ###   ########.fr        #
+#    Updated: 2024/02/08 11:07:02 by beroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ OBJS_D		:=	objs/
 
 OBJS		:=	$(SRCS:%.c=$(OBJS_D)%.o)
 
-HEAD		:=	so_long.h
+HEAD		:=	includes/so_long.h
 
-HEAD_D		:=	includes/
+HEAD_D		:=	.
 
 CFLAGS		:=	-Wall -Wextra -Werror -g3
 
@@ -62,10 +62,10 @@ all			:	lib
 lib			:
 				$(MAKE) -C $(MLX_D)
 
-$(NAME)		:	$(OBJS_D) $(OBJS) $(MLX_A) $(HEAD_D) $(HEAD)
+$(NAME)		:	$(OBJS_D) $(OBJS) $(MLX_A) $(HEAD)
 				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_A) $(MLX_F)
 
-$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD_D) $(HEAD) $(MLX_H)
+$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD) $(MLX_H)
 				$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
 
 $(OBJS_D)	:
