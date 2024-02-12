@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_gen.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:17:59 by beroy             #+#    #+#             */
-/*   Updated: 2024/01/17 15:15:37 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:29:49 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	step_display(t_mlx *mlx, t_data *img)
 	char	*tmp;
 
 	img->img = mlx_xpm_file_to_image(mlx->mlx,
-									 "assets/move_frame.xpm", &img->img_width, &img->img_height);
+			"assets/move_frame.xpm", &img->img_width, &img->img_height);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, img->img, 0, 0);
 	mlx_destroy_image(mlx->mlx, img->img);
 	mlx_string_put(mlx->mlx, mlx->win, 4, 11, 0xFFFFFFFF, "moves :");
@@ -50,7 +50,7 @@ void	step_display(t_mlx *mlx, t_data *img)
 		exit(0);
 	}
 	mlx_string_put(mlx->mlx, mlx->win,
-				   50, 12, 0xFFFFFFFF, tmp);
+		50, 12, 0xFFFFFFFF, tmp);
 	free(tmp);
 }
 
@@ -58,7 +58,6 @@ void	map_gen(t_mlx *mlx, t_map *map_info, t_data *img)
 {
 	size_t	w;
 	size_t	h;
-
 
 	h = 0;
 	w = 2;

@@ -78,18 +78,13 @@ int	map_checker(t_map *map_info)
 {
 	if (check_shape(map_info) == 1)
 		return (1);
-	write(1, "Shape OK!\n", 10);
 	if (check_border(map_info->map) == 1)
 		return (1);
-	write(1, "Border OK!\n", 11);
 	if (check_content(map_info->map) == 1)
 		return (1);
-	write(1, "Content OK!\n", 12);
 	if (map_info->ecount != 1 || map_info->pcount != 1)
 		return (1);
-	write(1, "Count OK!\n", 10);
 	if (solver_check(map_info) == 1)
 		return (1);
-	write(1, "Solve OK!\n", 10);
 	return (0);
 }
