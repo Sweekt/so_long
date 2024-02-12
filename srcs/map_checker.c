@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: beroy <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:46:02 by beroy             #+#    #+#             */
-/*   Updated: 2023/12/18 16:40:31 by beroy            ###   ########.fr       */
+/*   Updated: 2024/02/12 12:37:47 by beroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,15 @@ int	check_shape(t_map *map_info)
 	return (0);
 }
 
+int	map_size(t_map *map_info)
+{
+	if (map_info->mapw > 60)
+		return (1);
+	if (map_info->maph > 33)
+		return (1);
+	return (0);
+}
+
 int	map_checker(t_map *map_info)
 {
 	if (check_shape(map_info) == 1)
@@ -85,6 +94,8 @@ int	map_checker(t_map *map_info)
 	if (map_info->ecount != 1 || map_info->pcount != 1)
 		return (1);
 	if (solver_check(map_info) == 1)
+		return (1);
+	if (map_size(map_info) == 1)
 		return (1);
 	return (0);
 }
