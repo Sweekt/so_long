@@ -1,47 +1,88 @@
-SRCS	:=	main.c				\
-			ft_split.c			\
-			map_checker.c		\
-			map_parser.c		\
-			map_solve_check.c	\
-			so_long_utils.c		\
-			map_gen.c			\
-			move_wasd.c			\
-			ft_itoa.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: beroy <beroy@student.42lyon.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/07 16:45:45 by grebrune          #+#    #+#              #
+#    Updated: 2024/02/08 11:07:02 by beroy            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS_D	:=	srcs/
+########################################################################################################################
+#                                                       VARIABLE                                                       #
+########################################################################################################################
 
-OBJS_D	:=	objs/
+SRCS		:=	main.c				\
+				ft_itoa.c			\
+				ft_split.c			\
+				map_checker.c		\
+				map_gen.c			\
+				map_parser.c		\
+				map_solve_check.c	\
+				move_wasd.c			\
+				so_long_utils.c
 
-OBJS	:=	$(SRCS:%.c=$(OBJS_D)%.o)
+SRCS_D		:=	srcs/
 
-HEAD_D	:=	.
+OBJS_D		:=	objs/
 
-CFLAGS	:=	-Wall -Wextra -Werror
+OBJS		:=	$(SRCS:%.c=$(OBJS_D)%.o)
 
-AR	:=	ar rcs
+HEAD		:=	includes/so_long.h
 
-NAME	:=	so_long
+HEAD_D		:=	.
 
-all	:	$(NAME)
+CFLAGS		:=	-Wall -Wextra -Werror -g3
 
-$(NAME)	:	$(OBJS_D) $(OBJS) mlx Makefile
-			$(CC) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g3 -o $(NAME)
+NAME		:=	so_long
 
-$(OBJS)	:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD)
-			$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+########################################################################################################################
+#                                                         LIB                                                          #
+########################################################################################################################
+
+MLX			:=	libmlx.a
+
+MLX_D		:=	mlx_linux/
+
+MLX_F		:=	-L$(MLX_D) -L/usr/lib -lmlx -lXext -lX11 -lm -lz
+
+MLX_H		:=	$(MLX_D)mlx.h
+
+MLX_A		:=	$(addprefix $(MLX_D), $(MLX))
+
+########################################################################################################################
+#                                                        RULES                                                         #
+########################################################################################################################
+
+all			:	lib
+				$(MAKE) $(NAME)
+
+lib			:
+				$(MAKE) -C $(MLX_D)
+
+$(NAME)		:	$(OBJS_D) $(OBJS) $(MLX_A) $(HEAD)
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_A) $(MLX_F)
+
+$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD) $(MLX_H)
+				$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
 
 $(OBJS_D)	:
-			@mkdir -p $(OBJS_D)
+				@mkdir -p $(OBJS_D)
 
-mlx			:
-			make -C mlx_linux
+########################################################################################################################
+#                                                        COMMANDS                                                      #
+########################################################################################################################
 
-clean	:
-			$(RM) -r $(OBJS) $(OBJS_D) $(OBJS_B)
+clean		:
+				$(RM) -r $(OBJS) $(OBJS_D) $(OBJS_B) $(OBJS_B_D)
+				$(MAKE) clean -C mlx_linux
 
-fclean	:	clean
-			$(RM) $(NAME)
+fclean		:	clean
+				$(RM) $(NAME) $(NAME_B)
+				$(MAKE) clean -C mlx_linux
 
-re		:	fclean all
+re			:	fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all bonus clean fclean re lib
